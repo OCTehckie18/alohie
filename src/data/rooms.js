@@ -10,7 +10,7 @@ export const rooms = [
     maxGuests: 2,
     bedType: '1 Couple Bed',
     images: ['/assets/rooms/couple-104.jpg'],
-    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning'],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Tea Amenities', 'Room Cleaning'],
     featured: true,
   },
   {
@@ -24,7 +24,7 @@ export const rooms = [
     maxGuests: 2,
     bedType: '2 Single Beds',
     images: ['/assets/rooms/twin-105.jpg'],
-    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Extra Pillows', 'Mirror'],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Tea Amenities', 'Room Cleaning', 'Extra Pillows'],
     featured: true,
   },
   {
@@ -38,7 +38,7 @@ export const rooms = [
     maxGuests: 3,
     bedType: '3 Beds',
     images: ['/assets/rooms/triple-107.jpg', '/assets/rooms/triple-108.jpg'],
-    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Sofa-cum-Bed', 'Mirror', 'Wardrobe'],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Tea Amenities', 'Room Cleaning', 'Sofa-cum-Bed', 'Wardrobe'],
     featured: true,
   },
   {
@@ -50,9 +50,9 @@ export const rooms = [
     price: 3500,
     count: 1,
     maxGuests: 4,
-    bedType: '1 Deluxe Bed + Sofa',
+    bedType: '1 Deluxe Bed + Sofa-Cum-Bed',
     images: ['/assets/rooms/deluxe-109.jpg', '/assets/rooms/deluxe-109%20(2).jpg'],
-    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Extra Pillows', 'Mirror', 'Wardrobe', 'Mini Fridge', 'Seating Area'],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Tea Amenities', 'Room Cleaning', 'Extra Pillows', 'Wardrobe', 'Mini Fridge', 'Seating Area'],
     featured: true,
   },
 ];
@@ -62,7 +62,7 @@ export const amenityIcons = {
   'Free WiFi': '📶',
   'TV': '📺',
   'Attached Bathroom': '🚿',
-  'Hot Water': '♨️',
+  'Tea Amenities': '♨️',
   'Clean Towels': '🧴',
   'Room Cleaning': '🧹',
   'Extra Pillows': '🛏️',
@@ -78,7 +78,7 @@ export const lodgeAmenities = [
   { name: 'Free Parking', icon: '🅿️', desc: 'Secure parking space' },
   { name: 'AC Rooms', icon: '❄️', desc: 'All rooms fully air-conditioned' },
   { name: '24/7 Service', icon: '🔔', desc: 'Round the clock assistance' },
-  { name: 'Hot Water', icon: '♨️', desc: 'Available 24 hours' },
+  { name: 'Tea Amenities', icon: '♨️', desc: 'Available 24 hours' },
   { name: 'Clean & Safe', icon: '✨', desc: 'Regularly sanitized rooms' },
 ];
 

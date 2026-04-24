@@ -21,6 +21,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to top,
     rgba(15, 26, 48, 0.9) 0%,
@@ -29,9 +30,109 @@
   );
 }
 
+.heroCarousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1);
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.heroSlideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.heroSlideCaption {
+  position: absolute;
+  left: var(--space-6);
+  bottom: 88px;
+  z-index: 2;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(15, 26, 48, 0.45);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.heroCarouselControls {
+  position: absolute;
+  left: var(--space-6);
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.heroCarouselButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(15, 26, 48, 0.45);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.heroCarouselButton:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 26, 48, 0.6);
+}
+
+.heroCarouselDots {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 26, 48, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.heroCarouselDot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    width 160ms ease,
+    background-color 160ms ease;
+}
+
+.heroCarouselDotActive {
+  width: 28px;
+  background: var(--brand-gold);
+}
+
 .heroContent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
 }
 
@@ -43,6 +144,30 @@
   max-width: 800px;
   line-height: 1.1;
   color: var(--white);
+}
+
+.typewriterWrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  vertical-align: baseline;
+}
+
+.typewriterWord {
+  display: inline-block;
+  min-width: 8ch;
+}
+
+.typewriterCursor {
+  display: inline-block;
+  color: var(--brand-gold);
+  animation: cursorBlink 1s steps(1, end) infinite;
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .stars {
@@ -284,6 +409,23 @@
 }
 
 @media (max-width: 768px) {
+  .heroSlideCaption {
+    left: var(--space-4);
+    bottom: 84px;
+  }
+
+  .heroCarouselControls {
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .heroCarouselDots {
+    order: 3;
+  }
+
   .bookingBar {
     flex-direction: column;
     align-items: stretch;

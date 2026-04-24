@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './page.module.css';
 import { rooms } from '@/data/rooms';
+import RoomImageCarousel from './RoomImageCarousel';
 
 export const metadata = {
   title: 'Rooms & Suites | Alohie Lodge',
@@ -27,14 +27,8 @@ export default function RoomsPage() {
               <div key={room.id} id={room.id} className={styles.roomCardDetailed}>
 
                 <div className={styles.roomImage}>
-                  {room.images?.[0] ? (
-                    <Image
-                      src={room.images[0]}
-                      alt={room.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      style={{ objectFit: 'cover' }}
-                    />
+                  {room.images?.length ? (
+                    <RoomImageCarousel images={room.images} alt={room.name} />
                   ) : (
                     <div className={styles.imagePlaceholder}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '48px', height: '48px', opacity: 0.5 }}>

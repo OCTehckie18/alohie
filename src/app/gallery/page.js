@@ -3,19 +3,32 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
 
-// Placeholder data - replace with real image paths later
 const galleryItems = [
   { id: 1, category: 'rooms', title: 'Couple Bed Room', image: '/assets/rooms/couple-104.jpg' },
-  { id: 2, category: 'bathroom', title: 'Bathroom', image: '/assets/bathrooms/bathroom-104.jpg' },
-  { id: 3, category: 'exterior', title: 'Dining Area', image: '/assets/facilities/dining.jpg' },
-  { id: 4, category: 'exterior', title: 'Carrom Area', image: '/assets/facilities/carrom.jpg' },
+  { id: 2, category: 'rooms', title: 'Twin Bed Room', image: '/assets/rooms/twin-105.jpg' },
+  { id: 3, category: 'rooms', title: 'Triple Bed Room', image: '/assets/rooms/triple-107.jpg' },
+  { id: 4, category: 'rooms', title: 'Deluxe Room', image: '/assets/rooms/deluxe-109.jpg' },
+  { id: 5, category: 'bathrooms', title: 'Bathroom', image: '/assets/bathrooms/bathroom.jpg' },
+  { id: 6, category: 'bathrooms', title: 'Bathroom View', image: '/assets/bathrooms/bathroom-104.jpg' },
+  { id: 7, category: 'bathrooms', title: 'Bathroom View 2', image: '/assets/bathrooms/bathroom-105.jpg' },
+  { id: 8, category: 'facilities', title: 'Dining Area', image: '/assets/facilities/dining.jpg' },
+  { id: 9, category: 'facilities', title: 'Dining Area 2', image: '/assets/facilities/dining%20(2).jpg' },
+  { id: 10, category: 'facilities', title: 'Carrom Area', image: '/assets/facilities/carrom.jpg' },
+  { id: 11, category: 'facilities', title: 'Kitchen', image: '/assets/facilities/kitchen.jpg' },
+  { id: 12, category: 'facilities', title: 'Exterior View', image: '/assets/facilities/exterior.jpg' },
+  { id: 13, category: 'facilities', title: 'Exterior View 2', image: '/assets/facilities/exterior%20(2).jpg' },
+  { id: 14, category: 'facilities', title: 'Exterior View 3', image: '/assets/facilities/exterior%20(3).jpg' },
+  { id: 15, category: 'facilities', title: 'Exterior View 4', image: '/assets/facilities/exterior%20(4).jpg' },
+  { id: 16, category: 'facilities', title: 'Exterior View 5', image: '/assets/facilities/exterior%20(5).jpg' },
+  { id: 17, category: 'facilities', title: 'Exterior View 6', image: '/assets/facilities/exterior%20(6).jpg' },
+  { id: 18, category: 'facilities', title: 'Exterior View 7', image: '/assets/facilities/exterior%20(7).jpg' },
 ];
 
 const categories = [
   { id: 'all', label: 'All Photos' },
   { id: 'rooms', label: 'Rooms & Suites' },
-  { id: 'bathroom', label: 'Bathrooms' },
-  { id: 'exterior', label: 'Facilities & Exterior' },
+  { id: 'bathrooms', label: 'Bathrooms' },
+  { id: 'facilities', label: 'Facilities & Exterior' },
 ];
 
 export default function GalleryPage() {

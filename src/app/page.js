@@ -2,10 +2,70 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from './page.module.css';
-import { rooms, lodgeAmenities, testimonials, lodgeInfo } from '@/data/rooms';
+import { rooms, lodgeAmenities, testimonials } from '@/data/rooms';
 import RoomCard from '@/components/RoomCard';
+
+const lodgeWords = [
+  { text: 'Alohie Lodge', lang: 'English' },
+  {
+    text: "আলোহি ল'জ", lang: 'Assamese'
+  },
+  { text: 'আলোহি লজ', lang: 'Bengali' },
+  { text: 'अलोहि लॉज', lang: 'Hindi' },
+];
+
+const heroSlides = [
+  {
+    src: '/assets/carousel/hero-image.jpg',
+    alt: 'Alohie Lodge exterior view',
+    caption: 'Signature exterior',
+    position: 'center center',
+  },
+  {
+    src: '/assets/facilities/dining%20(2).jpg',
+    alt: 'Dining area for guests',
+    caption: 'Dining space',
+    position: 'center center',
+  },
+  {
+    src: '/assets/facilities/exterior%20(2).jpg',
+    alt: 'Alohie Lodge exterior area',
+    caption: 'Exterior view',
+    position: 'center 35%',
+  },
+  {
+    src: '/assets/facilities/exterior%20(3).jpg',
+    alt: 'Alohie Lodge reception area',
+    caption: 'Reception view',
+    position: 'center 35%',
+  },
+  {
+    src: '/assets/facilities/exterior%20(5).jpg',
+    alt: 'Alohie Lodge reception desk',
+    caption: 'Reception desk',
+    position: 'center 30%',
+  },
+  {
+    src: '/assets/facilities/exterior%20(6).jpg',
+    alt: 'Alohie Lodge common area',
+    caption: 'Common area',
+    position: 'center 40%',
+  },
+  {
+    src: '/assets/rooms/deluxe-109%20(2).jpg',
+    alt: 'Deluxe room with sofa and bed',
+    caption: 'Premium deluxe room',
+    position: 'center center',
+  },
+  {
+    src: '/assets/rooms/triple-108.jpg',
+    alt: 'Triple bed room',
+    caption: 'Triple room',
+    position: 'center center',
+  },
+];
 
 function getSuggestedRoomId(guestCount) {
   const count = Number(guestCount) || 1;
@@ -14,6 +74,143 @@ function getSuggestedRoomId(guestCount) {
     .sort((a, b) => a.maxGuests - b.maxGuests);
 
   return eligibleRooms[0]?.id || rooms[rooms.length - 1]?.id || rooms[0].id;
+}
+
+function LodgeTypewriter() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const activeWord = lodgeWords[wordIndex].text;
+    const typingDelay = 120;
+    const deletingDelay = 65;
+    const pauseDelay = 1100;
+
+    let timer = deleting ? deletingDelay : typingDelay;
+
+    if (!deleting && text === activeWord) {
+      timer = pauseDelay;
+    }
+
+    if (deleting && text === '') {
+      setDeleting(false);
+      setWordIndex((current) => (current + 1) % lodgeWords.length);
+      return undefined;
+    }
+
+    const timeout = window.setTimeout(() => {
+      if (!deleting && text === activeWord) {
+        setDeleting(true);
+        return;
+      }
+
+      if (deleting) {
+        setText(activeWord.slice(0, Math.max(0, text.length - 1)));
+        return;
+      }
+
+      setText(activeWord.slice(0, text.length + 1));
+    }, timer);
+
+    return () => window.clearTimeout(timeout);
+  }, [deleting, text, wordIndex]);
+
+  return (
+    <span className={styles.typewriterWrap} aria-live="polite" aria-atomic="true">
+      <span className={styles.typewriterWord}>{text}</span>
+      <span className={styles.typewriterCursor} aria-hidden="true">
+        |
+      </span>
+    </span>
+  );
+}
+
+function HeroCarousel() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    if (heroSlides.length < 2) {
+      return undefined;
+    }
+
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const goToSlide = (index) => {
+    setActiveSlide(index);
+  };
+
+  const goToPrevious = () => {
+    setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length);
+  };
+
+  const goToNext = () => {
+    setActiveSlide((current) => (current + 1) % heroSlides.length);
+  };
+
+  return (
+    <div className={styles.heroCarousel} aria-roledescription="carousel" aria-label="Hero image carousel">
+      {heroSlides.map((slide, index) => (
+        <div
+          key={slide.src}
+          className={`${styles.heroSlide} ${index === activeSlide ? styles.heroSlideActive : ''}`}
+          aria-hidden={index !== activeSlide}
+        >
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            style={{ objectFit: 'cover', objectPosition: slide.position }}
+            sizes="100vw"
+            priority={index === 0}
+          />
+          <div className={styles.heroSlideCaption}>{slide.caption}</div>
+        </div>
+      ))}
+
+      <div className={styles.heroCarouselControls}>
+        <button
+          type="button"
+          className={styles.heroCarouselButton}
+          onClick={goToPrevious}
+          aria-label="Previous hero image"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div className={styles.heroCarouselDots} role="tablist" aria-label="Select hero slide">
+          {heroSlides.map((slide, index) => (
+            <button
+              key={slide.src}
+              type="button"
+              className={`${styles.heroCarouselDot} ${index === activeSlide ? styles.heroCarouselDotActive : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Show slide ${index + 1}`}
+              aria-current={index === activeSlide}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={styles.heroCarouselButton}
+          onClick={goToNext}
+          aria-label="Next hero image"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -56,22 +253,15 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image
-            src="/assets/hero-image.jpg"
-            alt={`${lodgeInfo.name} hero`}
-            fill
-            style={{ objectFit: 'cover' }}
-            sizes="100vw"
-            priority
-          />
+          <HeroCarousel />
         </div>
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.stars} aria-label="5 star rating">
             ★★★★★
           </div>
           <h1 className={styles.heroTitle}>
-            {lodgeInfo.name},<br />
-            Your Comfortable Stay in Guwahati
+            {<LodgeTypewriter />}<br />
+            Your Comfortable Stay at Guwahati
           </h1>
           <p style={{ maxWidth: '640px', fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)', marginBottom: '24px' }}>
             Affordable rooms, easy booking, and a peaceful stay close to the city.
@@ -162,9 +352,12 @@ export default function Home() {
       <section className={`section ${styles.overviewSection}`}>
         <div className={`container ${styles.overviewGrid}`}>
           <div className={styles.overviewContent}>
-            <h2>Stay close to the city center at our lodge in Bangalore</h2>
+            <h2>Stay close to the city at Alohie Lodge</h2>
             <p>
-              Set in a tranquil yet accessible sector of Bangalore, the elegant Alohie Lodge offers stellar amenities and a peaceful location a short drive from major city attractions. Located conveniently, our lodge provides easy access to key business hubs, shopping centers, and local sightseeing spots.
+              Set in a tranquil yet accessible sector of Guwahati, the elegant Alohie Lodge offers stellar amenities and a peaceful location a short drive from major city attractions. Located conveniently, our lodge provides easy access to key tourism, shopping centers, and local sightseeing spots.
+            </p>
+            <p>
+              The most accesible for the magnificent visit to <b>Kamakhya Devalaya</b> is a must from the lodge, offering other services such as family vehicles, guidance and assist for early wake-up for early morning Darshan.
             </p>
             <p>
               Whether you're visiting for business or leisure, enjoy our clean, well-appointed rooms designed for your comfort. Experience warm hospitality, seamless connectivity with high-speed Wi-Fi, and 24/7 service ensuring a memorable stay.

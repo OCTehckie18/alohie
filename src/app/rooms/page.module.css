@@ -45,6 +45,22 @@
   min-height: 300px;
 }
 
+.roomImageCarousel {
+  position: absolute;
+  inset: 0;
+}
+
+.roomImageSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+.roomImageSlideActive {
+  opacity: 1;
+}
+
 .imagePlaceholder {
   position: absolute;
   inset: 0;
@@ -164,11 +180,11 @@
   .roomCardDetailed {
     grid-template-columns: 1fr;
   }
-  
+
   .roomImage {
     min-height: 250px;
   }
-  
+
   .roomInfo {
     padding: var(--space-6);
   }

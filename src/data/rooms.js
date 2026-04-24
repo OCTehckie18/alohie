@@ -108,7 +108,7 @@ export const lodgeInfo = {
   name: 'Alohie Lodge',
   tagline: 'Affordable & Best',
   phone: '+91 88224 64364',
-  whatsapp: '8822464364',
+  whatsapp: '918822464364',
   email: 'alohielodge@gmail.com',
   address: 'Alohie Lodge,Pandu Port Rd, Adabari Tiniali, Pandu, Guwahati, Assam 781012',
   mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.1440320338506!2d91.6853714!3d26.159438299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5bce80970df9%3A0x4e76ae06f39a69bb!2sAlohie%20Lodge!5e0!3m2!1sen!2sin!4v1777014579305!5m2!1sen!2sin',

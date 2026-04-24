@@ -1,0 +1,175 @@
+.header {
+  background-color: var(--brand-navy);
+  color: var(--white);
+  padding: var(--space-16) 0 var(--space-12);
+  text-align: center;
+}
+
+.title {
+  color: var(--white);
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.roomsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.roomCardDetailed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.roomCardDetailed:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.roomImage {
+  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+  position: relative;
+  min-height: 300px;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  gap: var(--space-2);
+}
+
+.roomInfo {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+
+.roomTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.roomDesc {
+  color: var(--gray-600);
+  font-size: 0.938rem;
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}
+
+.specsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.specItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.specItem svg {
+  color: var(--brand-red);
+}
+
+.amenities {
+  margin-bottom: var(--space-8);
+}
+
+.amenities h4 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+  margin-bottom: var(--space-3);
+}
+
+.amenitiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--gray-600);
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.priceNight {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .roomCardDetailed {
+    grid-template-columns: 1fr;
+  }
+  
+  .roomImage {
+    min-height: 250px;
+  }
+  
+  .roomInfo {
+    padding: var(--space-6);
+  }
+}

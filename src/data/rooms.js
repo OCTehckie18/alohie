@@ -1,0 +1,118 @@
+export const rooms = [
+  {
+    id: 'couple-bed',
+    name: 'Couple Bed Room',
+    slug: 'couple-bed-room',
+    tagline: 'Comfortable stay for two',
+    description: 'A cozy room with a couple bed, ideal for two guests looking for a comfortable stay.',
+    price: 2000,
+    count: 2,
+    maxGuests: 2,
+    bedType: '1 Couple Bed',
+    images: ['/assets/rooms/couple-104.jpg'],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning'],
+    featured: true,
+  },
+  {
+    id: 'split-bed',
+    name: 'Split Bed Room',
+    slug: 'split-bed-room',
+    tagline: 'Twin bed comfort for shared stays',
+    description: 'A practical split bed room designed for guests who prefer separate beds.',
+    price: 2000,
+    count: 2,
+    maxGuests: 2,
+    bedType: '2 Single Beds',
+    images: [],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Extra Pillows', 'Mirror'],
+    featured: true,
+  },
+  {
+    id: 'triple-bed',
+    name: 'Triple Bed Room',
+    slug: 'triple-bed-room',
+    tagline: 'Spacious stay for three',
+    description: 'A larger room suitable for three guests, with enough space for a relaxed stay.',
+    price: 2500,
+    count: 3,
+    maxGuests: 3,
+    bedType: '3 Beds',
+    images: [],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Extra Pillows', 'Mirror', 'Wardrobe'],
+    featured: true,
+  },
+  {
+    id: 'deluxe-sofa',
+    name: 'Deluxe Room with Sofa',
+    slug: 'deluxe-room-with-sofa',
+    tagline: 'Premium comfort with extra seating',
+    description: 'A deluxe room with a sofa, designed for guests who want a more premium setup.',
+    price: 3500,
+    count: 1,
+    maxGuests: 4,
+    bedType: '1 Deluxe Bed + Sofa',
+    images: [],
+    amenities: ['AC', 'Free WiFi', 'TV', 'Attached Bathroom', 'Hot Water', 'Clean Towels', 'Room Cleaning', 'Extra Pillows', 'Mirror', 'Wardrobe', 'Mini Fridge', 'Seating Area'],
+    featured: true,
+  },
+];
+
+export const amenityIcons = {
+  'AC': '❄️',
+  'Free WiFi': '📶',
+  'TV': '📺',
+  'Attached Bathroom': '🚿',
+  'Hot Water': '♨️',
+  'Clean Towels': '🧴',
+  'Room Cleaning': '🧹',
+  'Extra Pillows': '🛏️',
+  'Mirror': '🪞',
+  'Wardrobe': '👔',
+  'Seating Area': '🪑',
+  'Parking': '🅿️',
+  '24/7 Service': '🔔',
+};
+
+export const lodgeAmenities = [
+  { name: 'Free WiFi', icon: '📶', desc: 'High-speed internet throughout' },
+  { name: 'Free Parking', icon: '🅿️', desc: 'Secure parking space' },
+  { name: 'AC Rooms', icon: '❄️', desc: 'All rooms fully air-conditioned' },
+  { name: '24/7 Service', icon: '🔔', desc: 'Round the clock assistance' },
+  { name: 'Hot Water', icon: '♨️', desc: 'Available 24 hours' },
+  { name: 'Clean & Safe', icon: '✨', desc: 'Regularly sanitized rooms' },
+];
+
+export const testimonials = [
+  {
+    name: 'Rajesh Kumar',
+    rating: 5,
+    text: 'Very clean rooms and friendly staff. Best budget lodge in the area. Will definitely come again!',
+    date: 'March 2026',
+  },
+  {
+    name: 'Priya & Arun',
+    rating: 5,
+    text: 'We stayed in the double room for 3 nights. Very comfortable and affordable. Great value for money.',
+    date: 'February 2026',
+  },
+  {
+    name: 'Sunita Devi',
+    rating: 4,
+    text: 'Stayed with family. Rooms are spacious and well maintained. Location is convenient. Recommended!',
+    date: 'January 2026',
+  },
+];
+
+// Contact & Lodge info
+export const lodgeInfo = {
+  name: 'Alohie Lodge',
+  tagline: 'Affordable & Best',
+  phone: '+91 88224 64364',
+  whatsapp: '8822464364',
+  email: 'alohielodge@gmail.com',
+  address: 'Alohie Lodge,Pandu Port Rd, Adabari Tiniali, Pandu, Guwahati, Assam 781012',
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.1440320338506!2d91.6853714!3d26.159438299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5bce80970df9%3A0x4e76ae06f39a69bb!2sAlohie%20Lodge!5e0!3m2!1sen!2sin!4v1777014579305!5m2!1sen!2sin',
+  upiId: 'vyapar.171761792456@hdfcbank',
+  checkInTime: '12:00 PM',
+  checkOutTime: '11:00 AM',
+};

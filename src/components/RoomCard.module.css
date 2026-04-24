@@ -1,0 +1,127 @@
+/* RoomCard.module.css */
+.card {
+  background: var(--white);
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: all var(--duration-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.imageArea {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  gap: var(--space-2);
+}
+
+.imagePlaceholder svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+
+.content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gray-900);
+  margin-bottom: var(--space-3);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: 0.8125rem;
+  color: var(--gray-600);
+  border-bottom: 1px solid var(--gray-100);
+  padding-bottom: var(--space-4);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaItem svg {
+  color: var(--brand-red);
+}
+
+.priceBlock {
+  margin-top: auto;
+  margin-bottom: var(--space-6);
+}
+
+.priceLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.priceNight {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.readMore {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-red);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--duration-fast);
+}
+
+.readMore:hover {
+  gap: 8px;
+  color: var(--brand-red-hover);
+}

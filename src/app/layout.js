@@ -12,11 +12,15 @@ export const metadata = {
     description: 'Book your comfortable and affordable stay at Alohie Lodge.',
     type: 'website',
   },
+  icons: {
+    icon: '/color-logo.png',
+    apple: '/color-logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Navbar />
         <main>{children}</main>

@@ -79,6 +79,36 @@
 
 .navCta { display: none; }
 
+.navPhone {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand-red);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.navPhone:hover {
+  transform: scale(1.05);
+}
+
+.navPhone svg {
+  color: var(--brand-red);
+}
+
+@media (max-width: 768px) {
+  .navPhone {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navPhone span {
+    display: none;
+  }
+}
+
 /* Hamburger */
 .hamburger {
   display: none;

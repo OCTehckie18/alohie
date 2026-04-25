@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+}
+
 .title {
   color: var(--white);
   margin-bottom: var(--space-4);
@@ -25,8 +31,15 @@
   display: flex;
   justify-content: center;
   gap: var(--space-3);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    margin-bottom: var(--space-6);
+    gap: var(--space-2);
+  }
 }
 
 .filterBtn {

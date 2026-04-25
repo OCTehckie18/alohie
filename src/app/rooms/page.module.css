@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+}
+
 .title {
   color: var(--white);
   margin-bottom: var(--space-4);
@@ -186,6 +192,10 @@
   }
 
   .roomInfo {
-    padding: var(--space-6);
+    padding: var(--space-5);
+  }
+  
+  .roomTitle {
+    font-size: 1.5rem;
   }
 }

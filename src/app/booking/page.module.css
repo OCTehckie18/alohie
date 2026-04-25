@@ -7,7 +7,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: var(--space-10) 0 var(--space-8);
+    padding: var(--space-6) 0 var(--space-4);
   }
 }
 
@@ -45,8 +45,8 @@
 
 @media (max-width: 576px) {
   .formSection {
-    padding: var(--space-5);
-    margin-bottom: var(--space-4);
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
   }
 }
 
@@ -66,7 +66,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .formGroup {
@@ -246,9 +246,10 @@
   }
 
   .formSectionTitle {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-3);
+    font-size: 1.15rem;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    gap: var(--space-2);
   }
 
   .title {

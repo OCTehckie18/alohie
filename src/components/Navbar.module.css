@@ -104,21 +104,25 @@
 @media (max-width: 768px) {
   .navPhone {
     display: flex;
-    font-size: 0.9rem;
-    margin: 0 auto;
+    font-size: 0.85rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: auto;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .navPhone {
-    font-size: 0.75rem;
-    gap: 4px;
+    font-size: 0.7rem;
+    gap: 3px;
   }
   .navPhone span {
     color: var(--brand-red) !important;
+  }
+  .logo img {
+    height: 32px;
   }
 }
 

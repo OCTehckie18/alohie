@@ -81,6 +81,10 @@ function BookingForm() {
       ? '*Price:* To be confirmed'
       : `*Total Amount:* ₹${totalPrice}`;
 
+    const paymentStatus = formData.paymentMethod === 'upi' 
+      ? `*Payment:* UPI (QR) - 50% Advance (₹${totalPrice / 2})` 
+      : '*Payment:* Pay at Property';
+
     const message = `*New Reservation Request* 🏨
     
 *Name:* ${formData.name}
@@ -92,7 +96,7 @@ function BookingForm() {
 *Nights:* ${nights}
 *Guests:* ${formData.guests}
 
-*Payment Method:* ${formData.paymentMethod === 'upi' ? 'UPI (QR)' : 'Pay at Property'}
+${paymentStatus}
 ${priceLine}
 
 Please confirm my booking.`;
@@ -191,19 +195,24 @@ Please confirm my booking.`;
 
             {formData.paymentMethod === 'upi' && (
               <div className={styles.upiBox}>
-                <p style={{ marginBottom: '16px', color: 'var(--gray-600)' }}>Scan the QR code or use the UPI ID below to pay.</p>
-                <div style={{ width: '220px', height: '220px', background: 'var(--white)', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--gray-200)', borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image
-                    src="/assets/upi-qr.jpg"
-                    alt="UPI QR Code"
-                    width={200}
-                    height={200}
-                    style={{
-                      objectFit: 'contain',
-                      objectPosition: 'center'
-                    }}
-                  />
-                </div>
+                <p style={{ marginBottom: '16px', color: 'var(--gray-600)' }}>Scan the QR code or <strong>tap it</strong> to pay the 50% advance (₹{(totalPrice / 2).toLocaleString('en-IN')}) via your UPI app.</p>
+                <a 
+                  href={`upi://pay?pa=${lodgeInfo.upiId}&pn=${encodeURIComponent(lodgeInfo.name)}&am=${(totalPrice / 2).toFixed(2)}&cu=INR&tn=${encodeURIComponent('Booking Advance for ' + formData.name)}`}
+                  style={{ display: 'block', width: '220px', margin: '0 auto 16px', cursor: 'pointer' }}
+                >
+                  <div style={{ width: '220px', height: '220px', background: 'var(--white)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--gray-200)', borderRadius: '12px', overflow: 'hidden' }}>
+                    <Image
+                      src="/assets/upi-qr.jpg"
+                      alt="UPI QR Code"
+                      width={200}
+                      height={200}
+                      style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center'
+                      }}
+                    />
+                  </div>
+                </a>
                 <p style={{ fontWeight: 600, color: 'var(--gray-900)' }}>{lodgeInfo.upiId}</p>
               </div>
             )}

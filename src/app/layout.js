@@ -13,14 +13,24 @@ export const metadata = {
     type: 'website',
   },
   icons: {
-    icon: '/color-logo.png',
-    apple: '/color-logo.png',
+    icon: [
+      { url: '/color-logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/color-logo.png', sizes: '16x16', type: 'image/png' },
+    ],
+    shortcut: '/color-logo.png',
+    apple: [
+      { url: '/color-logo.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/color-logo.png" />
+        <link rel="apple-touch-icon" href="/color-logo.png" />
+      </head>
       <body>
         <Navbar />
         <main>{children}</main>

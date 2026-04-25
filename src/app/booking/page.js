@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import styles from './page.module.css';
 import { rooms, lodgeInfo } from '@/data/rooms';
 
@@ -191,8 +192,17 @@ Please confirm my booking.`;
             {formData.paymentMethod === 'upi' && (
               <div className={styles.upiBox}>
                 <p style={{ marginBottom: '16px', color: 'var(--gray-600)' }}>Scan the QR code or use the UPI ID below to pay.</p>
-                <div style={{ width: '150px', height: '150px', background: 'var(--white)', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--gray-200)', borderRadius: '8px' }}>
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+                <div style={{ width: '220px', height: '220px', background: 'var(--white)', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--gray-200)', borderRadius: '12px', overflow: 'hidden' }}>
+                  <Image
+                    src="/assets/upi-qr.jpg"
+                    alt="UPI QR Code"
+                    width={200}
+                    height={200}
+                    style={{
+                      objectFit: 'contain',
+                      objectPosition: 'center'
+                    }}
+                  />
                 </div>
                 <p style={{ fontWeight: 600, color: 'var(--gray-900)' }}>{lodgeInfo.upiId}</p>
               </div>

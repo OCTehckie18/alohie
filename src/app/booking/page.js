@@ -14,6 +14,14 @@ function getSuggestedRoomId(guestCount) {
   return eligibleRooms[0]?.id || rooms[rooms.length - 1]?.id || rooms[0].id;
 }
 
+const SHOW_ONLINE_PAYMENT = false;
+
+function isJuneBooking(checkInDate) {
+  if (!checkInDate) return false;
+  const parts = checkInDate.split('-');
+  return parts[1] === '06'; // '06' represents June
+}
+
 function BookingForm() {
   const searchParams = useSearchParams();
   const roomParam = searchParams.get('room');
@@ -81,8 +89,8 @@ function BookingForm() {
       ? '*Price:* To be confirmed'
       : `*Total Amount:* ₹${totalPrice}`;
 
-    const paymentStatus = formData.paymentMethod === 'upi' 
-      ? `*Payment:* UPI (QR) - 50% Advance (₹${totalPrice / 2})` 
+    const paymentStatus = formData.paymentMethod === 'upi'
+      ? `*Payment:* UPI (QR) - 50% Advance (₹${totalPrice / 2})`
       : '*Payment:* Pay at Property';
 
     const message = `*New Reservation Request* 🏨
@@ -187,16 +195,18 @@ Please confirm my booking.`;
                 <input type="radio" name="paymentMethod" value="pay_at_property" checked={formData.paymentMethod === 'pay_at_property'} onChange={handleInputChange} style={{ accentColor: 'var(--brand-red)' }} />
                 <span style={{ fontWeight: 500 }}>Pay at Property (Booking can't be confirmed)</span>
               </label>
-              <label className={`${styles.paymentOption} ${formData.paymentMethod === 'upi' ? styles.selected : ''}`}>
-                <input type="radio" name="paymentMethod" value="upi" checked={formData.paymentMethod === 'upi'} onChange={handleInputChange} style={{ accentColor: 'var(--brand-red)' }} />
-                <span style={{ fontWeight: 500 }}>Pay now via UPI (10% off on Check-in)</span>
-              </label>
+              {SHOW_ONLINE_PAYMENT && (
+                <label className={`${styles.paymentOption} ${formData.paymentMethod === 'upi' ? styles.selected : ''}`}>
+                  <input type="radio" name="paymentMethod" value="upi" checked={formData.paymentMethod === 'upi'} onChange={handleInputChange} style={{ accentColor: 'var(--brand-red)' }} />
+                  <span style={{ fontWeight: 500 }}>Pay now via UPI{!isJuneBooking(formData.checkIn) ? ' (10% off on Check-in)' : ''}</span>
+                </label>
+              )}
             </div>
 
-            {formData.paymentMethod === 'upi' && (
+            {SHOW_ONLINE_PAYMENT && formData.paymentMethod === 'upi' && (
               <div className={styles.upiBox}>
                 <p style={{ marginBottom: '16px', color: 'var(--gray-600)' }}>Scan the QR code or <strong>tap it</strong> to pay the 50% advance (₹{(totalPrice / 2).toLocaleString('en-IN')}) via your UPI app.</p>
-                <a 
+                <a
                   href={`upi://pay?pa=${lodgeInfo.upiId}&pn=${encodeURIComponent(lodgeInfo.name)}&am=${(totalPrice / 2).toFixed(2)}&cu=INR&tn=${encodeURIComponent('Booking Advance for ' + formData.name)}`}
                   style={{ display: 'block', width: '220px', margin: '0 auto 16px', cursor: 'pointer' }}
                 >
